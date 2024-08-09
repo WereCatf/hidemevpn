@@ -38,7 +38,7 @@ _HIDEME_SERVER_ denotes the VPN endpoint to connect to, ie. basically what count
 Edit the _.env_ file to your liking, then launch a container with the following, while optionally setting up a volume (the `-v` argument) for it:
 
 ```console
-docker run -v ./etc:/opt/hide.me/etc --env-file ./env --cap-add SYS_MODULE --cap-add NET_ADMIN --sysctl net.ipv4.conf.all.src_valid_mark=1 --name hidemevpn -itd werecatf/hidemevpn:latest
+docker run -v ./etc:/opt/hide.me/etc --env-file ./env --cap-add NET_ADMIN --sysctl net.ipv4.conf.all.src_valid_mark=1 --name hidemevpn -itd werecatf/hidemevpn:latest
 ```
 
 ### Launch using Docker compose
@@ -54,7 +54,6 @@ services:
     env_file: .env
     cap_add:
       - NET_ADMIN
-      - SYS_MODULE
     sysctls:
       net.ipv4.conf.all.src_valid_mark: 1
     volumes:

@@ -16,7 +16,7 @@ LABEL org.label-schema.build-date=$BUILD_DATE
 LABEL org.label-schema.name="werecatf/hidemevpn"
 LABEL org.label-schema.description="Hide.me VPN client"
 LABEL org.label-schema.url="https://hide.me"
-LABEL org.label-schema.docker.cmd="docker run -v ./etc:/opt/hide.me/etc --env-file ./env --cap-add SYS_MODULE --cap-add NET_ADMIN --sysctl net.ipv4.conf.all.src_valid_mark=1 --name hidemevpn -itd werecatf/hidemevpn:latest"
+LABEL org.label-schema.docker.cmd="docker run -v ./etc:/opt/hide.me/etc --env-file ./env --cap-add NET_ADMIN --sysctl net.ipv4.conf.all.src_valid_mark=1 --name hidemevpn -itd werecatf/hidemevpn:latest"
 ENV APP_NAME="Hide.me VPN"
 WORKDIR /opt/hide.me/
 COPY --from=build /opt/hide.me/hide.me /opt/hide.me/
