@@ -12,19 +12,19 @@ jobs:
             - name: Checkout repository code
               uses: actions/checkout@v4
 
-            - name: Update CHANGELOG
-              id: changelog
-              uses: requarks/changelog-action@v1
-              with:
-                  token: ${{ secrets.GITHUB_TOKEN }}
-                  tag: ${{ github.ref_name }}
+            # - name: Update CHANGELOG
+            #   id: changelog
+            #   uses: requarks/changelog-action@v1
+            #   with:
+            #       token: ${{ secrets.GITHUB_TOKEN }}
+            #       tag: ${{ github.ref_name }}
 
-            - name: Commit CHANGELOG.md
-              uses: stefanzweifel/git-auto-commit-action@v4
-              with:
-                  branch: main
-                  commit_message: "docs: update CHANGELOG.md for ${{ github.ref_name }} [skip ci]"
-                  file_pattern: CHANGELOG.md
+            # - name: Commit CHANGELOG.md
+            #   uses: stefanzweifel/git-auto-commit-action@v4
+            #   with:
+            #       branch: main
+            #       commit_message: "docs: update CHANGELOG.md for ${{ github.ref_name }} [skip ci]"
+            #       file_pattern: CHANGELOG.md
 
             - name: Setup QEMU
               uses: docker/setup-qemu-action@v3
