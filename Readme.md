@@ -31,6 +31,8 @@ _HIDEME_ALLOW_NETWORKS_ is a comma-separated list of [CIDR](https://en.wikipedia
 
 _HIDEME_INTERVAL_ allows you to specify an interval for automatically disconnecting from the VPN endpoint and reconnecting, which is most useful when using "any" as the endpoint as you'll likely end up with a new IP-address. You can specify the interval as either a constant one or give a range between two values to randomize the interval after every cycle. As an example, `HIDEME_INTERVAL="5m"` would produce a constant interval of 5 minutes and `HIDEME_INTERVAL="3h-2d"` would produce anything between 3 hours and 2 days.
 
+_HIDEME_SERVER_ denotes the VPN endpoint to connect to, ie. basically what country. `any` would just choose randomly one, `dk` would choose a danish one and so on. Prepend the endpoint with `free-`, if you are using a free/trial account, like e.g. `free-fi`
+
 ### Launch container
 
 Edit the _.env_ file to your liking, then launch a container with the following, while optionally setting up a volume (the `-v` argument) for it:
