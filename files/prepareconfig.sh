@@ -9,20 +9,20 @@ fi
 if [ ! -v HIDEME_TOKEN ]; then
     export HIDEME_TOKEN=""
 fi
-if [ ! -v HIDEME_SERVER ]; then
+if [[ ! -v HIDEME_SERVER || -z "${HIDEME_SERVER}" ]]; then
     export HIDEME_SERVER="any"
 fi
-if [ ! -v HIDEME_PORT_FORWARDING ]; then
+if [[ ! -v HIDEME_PORT_FORWARDING || -z "${HIDEME_PORT_FORWARDING}" ]]; then
     export HIDEME_PORT_FORWARDING="true"
 fi
-if [ ! -v HIDEME_FORCE_DNS ]; then
+if [[ ! -v HIDEME_FORCE_DNS || -z "${HIDEME_FORCE_DNS}" ]]; then
     export HIDEME_FORCE_DNS="true"
 fi
-if [ ! -v HIDEME_IPV4 ]; then
+if [[ ! -v HIDEME_IPV4 || -z "${HIDEME_IPV4}" ]]; then
     export HIDEME_IPV4="true"
 fi
-if [ ! -v HIDEME_IPV6 ]; then
-    export HIDEME_IPV6="true"
+if [[ ! -v HIDEME_IPV6 || -z "${HIDEME_IPV6}" ]]; then
+    export HIDEME_IPV6="false"
 fi
 if [ ! -v HIDEME_ALLOW_NETWORKS ]; then
     export HIDEME_ALLOW_NETWORKS=""
@@ -106,7 +106,7 @@ if [[ -z ${HIDEME_TOKEN} && ! -e /opt/hide.me/etc/accessToken.txt ]]; then
     data=${data}'"username":"'${HIDEME_USERNAME}'",'
     data=${data}'"password":"'${HIDEME_PASSWORD}'"'
     data=${data}"}"
-    url="https://${HIDEME_SERVER}.hideservers.net:432/v1.0.0/accessToken"
+    url="https://any.hideservers.net:432/v1.0.0/accessToken"
     HIDEME_TOKEN=$(curl -s -f --cacert /opt/hide.me/CA.pem -X POST --data-binary ${data} ${url})
     if [[ $? == "22" ]]; then
         echo -e "\nFailed at fetching token, cannot continue!\nMaybe try again later.\n\n"
