@@ -15,16 +15,16 @@ To be able to connect to Hide.me servers, you need an access token. You can eith
 Create a _.env_ file with the following contents (these are the defaults) and then customize its contents to your liking:
 
 ```console
-HIDEME_USERNAME=""
-HIDEME_PASSWORD=""
-HIDEME_TOKEN=""
-HIDEME_SERVER="any"
-HIDEME_PORT_FORWARDING="true"
-HIDEME_FORCE_DNS="true"
-HIDEME_IPV4="true"
-HIDEME_IPV6="false"
-HIDEME_ALLOW_NETWORKS=""
-HIDEME_INTERVAL=""
+HIDEME_USERNAME=
+HIDEME_PASSWORD=
+HIDEME_TOKEN=
+HIDEME_SERVER=any
+HIDEME_PORT_FORWARDING=true
+HIDEME_FORCE_DNS=true
+HIDEME_IPV4=true
+HIDEME_IPV6=false
+HIDEME_ALLOW_NETWORKS=
+HIDEME_INTERVAL=
 ```
 
 _HIDEME_ALLOW_NETWORKS_ is a comma-separated list of [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation) networks you wish to allow traffic from into the containerized, private network -- the hide.me client blocks all split network traffic by default for security reasons. If you are running another container within the hidemevpn network, like e.g. nginx, and you wish to allow your local devices to access the service, you need to export the corresponding port and then add your local network to _HIDEME_ALLOW_NETWORKS_, like e.g. if your LAN is _192.168.1.0/24_, you'd add that. Otherwise, you won't be able to access the service.
