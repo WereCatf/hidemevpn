@@ -47,7 +47,7 @@ jobs:
 
             - name: Extract client version from tag
               id: extract_version
-              run: echo "CLIENTVERSION=$(echo '${{ github.ref_name }}' | awk '{print $1}')" >> $GITHUB_ENV
+              run: echo "CLIENTVERSION=$(echo '${{ github.ref_name }}' | sed 's/[ _-].*$//')" >> $GITHUB_ENV
 
             - name: Build and push
               uses: docker/build-push-action@v5
