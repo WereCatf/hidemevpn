@@ -12,6 +12,7 @@ fi
 if [[ ! -v HIDEME_SERVER || -z "${HIDEME_SERVER}" ]]; then
     export HIDEME_SERVER="any"
 fi
+export HIDEME_SERVER=$(echo -n "${HIDEME_SERVER}" | cut -d "." -f 1)
 if [[ ! -v HIDEME_PORT_FORWARDING || -z "${HIDEME_PORT_FORWARDING}" ]]; then
     export HIDEME_PORT_FORWARDING="true"
 fi
@@ -87,10 +88,6 @@ if [[ -z ${HIDEME_USERNAME} && -z ${HIDEME_PASSWORD} && -z ${HIDEME_TOKEN} ]]; t
     echo -e "\nNo username, password or access token supplied, cannot continue!\n\n"
     sleep 1
     exit 1
-fi
-
-if [[ -z ${HIDEME_SERVER} ]]; then
-    HIDEME_SERVER="any"
 fi
 
 if [[ ${HIDEME_TOKEN} && ! -e /opt/hide.me/etc/accessToken.txt ]]; then
