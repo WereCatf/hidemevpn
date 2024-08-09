@@ -1,0 +1,8 @@
+etc
+k
+*.swp
+*.save
+files/hide.me.*
+files/CA.pem
+buildtemp
+volume

@@ -1,0 +1,33 @@
+version: "3"
+services:
+  hidemevpn:
+    container_name: hidemevpn
+    image: werecatf/hidemevpn:latest
+    env_file: .env
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      net.ipv4.conf.all.src_valid_mark: 1
+    # volumes:
+      # - ./etc:/opt/hide.me/etc # Optional, not required!
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+  #   ports:
+  #     - 8080:8080 # Any port exposed by the "someservice" container has to be exported here.
+  #
+  # someservice:
+  #   image: someone/someimage:latest
+  #   container_name: someservice
+  #   network_mode: "service:hidemevpn" # **This is the important part to route the traffic through the VPN! **
+  #   environment:
+  #     - PUID=1000
+  #     - PGID=1000
+  #     - TZ=Etc/UTC
+  #   volumes:
+  #     - ./someservice:/config
+  #   restart: unless-stopped
+  #   depends_on: # Optional: these lines ensure that these additional containers will not be started until the VPN is up.
+  #     hidemevpn:
+  #       condition: service_started
