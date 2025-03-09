@@ -49,14 +49,14 @@ if [[ ! -e /tmp/hide.me.conf ]]; then
         if [[ ${HIDEME_IPV4,,} = "true" ]]; then
             networks4=$(for if in $(ip -o link | awk -F'[ @:]' '{print $3}'); do
                 if [ ${if} = lo ]; then continue; fi
-                ip -o -4 address show ${if} | awk '{print $4}' | xargs | sed 's/ /,/g'
-            done)
+                ip -o -4 address show ${if} | awk '{print $4}'
+            done | xargs | sed 's/ /,/g')
         fi
         if [[ ${HIDEME_IPV6,,} = "true" ]]; then
             networks6=$(for if in $(ip -o link | awk -F'[ @:]' '{print $3}'); do
                 if [ ${if} = lo ]; then continue; fi
-                ip -o -6 address show ${if} | awk '{print $4}' | xargs | sed 's/ /,/g'
-            done)
+                ip -o -6 address show ${if} | awk '{print $4}'
+            done | xargs | sed 's/ /,/g')
         fi
         if [[ ! -z "${networks4}" && ! -z "${networks6}" ]]; then
             networks="${networks4},${networks6}"
