@@ -33,6 +33,8 @@ RUN case ${TARGETARCH} in \
     "riscv64") export arch="riscv64" ;; \
     "arm/v7") export arch="armhf" ;; \
     "arm/v6") export arch="armel" ;; \
+    "ppc64le") export arch="powerpc64le" ;; \
+    "s390x") export arch="s390x" ;; \
     *) echo "Unsupported architecture: ${TARGETARCH}" && exit 1 ;; \
     esac \
     && curl -L -o /tmp/s6-overlay.tar.xz https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-${arch}.tar.xz \
